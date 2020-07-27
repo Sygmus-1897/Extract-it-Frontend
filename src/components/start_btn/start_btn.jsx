@@ -22,22 +22,21 @@ const useStyles = makeStyles((theme) => ({
 const StartButton = (props) => {
   const onStartClicked = (event) => {
     event.preventDefault();
+
     axios
-      .post("/test", {
+      .post("/extract_posts", {
         method: "POST",
         cache: "no-cache",
         headers: {
           content_type: "application/json",
         },
-        data: { some: props.subreddit },
+        data: { subreddit: props.subreddit, resume: props.resume },
       })
       .then((res) => {
         console.log(res.data);
       })
       .catch((error) => console.log(error));
-    // fetch("/test")
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
+    props.setOpen(!props.open);
   };
 
   const classes = useStyles();

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import CurrentItem from "./curr_item";
 import Progressbar from "./linear_progress_bar";
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
@@ -45,28 +44,30 @@ const ProgressWindow = (props) => {
       <div className="progress-window">
         {props.currPost ? (
           <div className="progress-window-container">
+            <div className="progress-window-title-container">
+              <label className="progress-window-title">Extracting Data</label>
+            </div>
             <div className="progress-section">
-              <CurrentItem
-                class="progress-counter"
-                message={progress.toString().concat("%")}
-              />
+              <label className="progress-counter">
+                {progress.toString().concat("%")}
+              </label>
               <Progressbar progress={progress} />
             </div>
             <div className="info-section">
-              <CurrentItem
-                class="current-post-label"
-                message="Working on PostID"
-              />
-              <CurrentItem class="current-post" message={props.currPost} />
-              <CurrentItem
-                class="current-date-label"
-                message="Scraping Posts from"
-              />
-              <CurrentItem class="current-date" message={getDate()} />
+              <div className="post-info">
+                <label className="current-post-label">Working on postID:</label>
+                <label className="current-post">{props.currPost}</label>
+              </div>
+              <div className="date-info">
+                <label className="current-date-label">
+                  Scraping posts from:
+                </label>
+                <label className="current-date">{getDate()}</label>
+              </div>
             </div>
           </div>
         ) : (
-          <CurrentItem class="loading-msg" message="loading..." />
+          <label className="loading-msg">loading...</label>
         )}
       </div>
     </Backdrop>

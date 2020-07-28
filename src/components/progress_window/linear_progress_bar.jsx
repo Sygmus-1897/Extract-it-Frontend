@@ -13,11 +13,13 @@ const useStyles = makeStyles((theme) => ({
 const ProgressBar = (props) => {
   const classes = useStyles();
   return (
-    <LinearProgress
-      className={classes.root}
-      variant="determinate"
-      value={props.progress}
-    />
+    <div className="progress-bar-container">
+      <LinearProgress
+        className={classes.root}
+        variant="determinate"
+        value={props.progress}
+      />
+    </div>
   );
 };
 

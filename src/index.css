@@ -82,14 +82,15 @@ code {
   align-items: center;
 }
 
-@media (min-width: 601px) {
+@media (min-width: 101px) {
   .progress-window {
-    display: flex;
+    font-family: "Poppins", "Montserrat", sans-serif;
+
+    display: relative;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    /* width: 50%; */
-    padding: 0;
+    width: 35%;
+    padding: 10px 20px;
     background-color: white;
     border-radius: 30px;
     color: #253237;
@@ -98,10 +99,9 @@ code {
 
   .progress-counter {
     font-family: "Roboto", sans-serif;
-    font-size: 50px;
+    font-size: 4vw;
     color: #253237;
-    margin: 0 30px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
 
   .progress-section {
@@ -109,22 +109,25 @@ code {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 5px;
+    margin-top: 15px;
   }
 
   .progress-window-container {
     display: flex;
-    flex-direction: row;
-    padding: 40px;
+    flex-direction: column;
   }
 
   .info-section {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    padding: 10px 20px;
-    padding-left: 30px;
-    border-left: 1px solid #6c757d;
+    margin: 15px 0 30px;
+  }
+
+  .post-info,
+  .date-info {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
   }
 
   .current-post-label,
@@ -132,9 +135,20 @@ code {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 25px;
+    font-size: 1.3vw;
     font-weight: bold;
-    margin: 10px 0;
+  }
+
+  .progress-window-title-container {
+    position: relative;
+    border-bottom: 1px solid #adb5bd;
+    padding: 15px 0;
+  }
+
+  .progress-window-title {
+    font-size: 1.4vw;
+    color: #6c757d;
+    font-weight: bold;
   }
 
   .current-post,
@@ -142,8 +156,10 @@ code {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-weight: normal;
+    color: #6c757d;
+    font-size: 1.3vw;
+    margin-left: 20px;
   }
 
   .loading-msg {
@@ -152,7 +168,7 @@ code {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 100px) {
   .progress-window {
     display: flex;
     justify-content: center;

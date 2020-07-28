@@ -128,6 +128,9 @@ code {
 
 .current-post-label,
 .current-date-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 25px;
   font-weight: bold;
   margin: 10px 0;
@@ -135,6 +138,9 @@ code {
 
 .current-post,
 .current-date {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 20px;
   margin-bottom: 10px;
 }

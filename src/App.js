@@ -9,9 +9,11 @@ function App() {
   let [resumeCheck, setResumeCheck] = useState(true);
   let [openProgressWindow, setOpenProgressWindow] = useState(false);
   let [startDate, setStartDate] = useState(0);
-  let [endDate, setEndDate] = useState(2);
+  let [endDate, setEndDate] = useState(1);
   let [currDate, setCurrDate] = useState(0);
   let [currPost, setCurrPost] = useState("");
+  let [dataSize, setDataSize] = useState(1);
+  let [currData, setCurrData] = useState(0);
   // let [serverResponse, setServerResponse] = useState("");
 
   useEffect(() => {
@@ -20,6 +22,7 @@ function App() {
       let obj = JSON.parse(e["data"]);
       console.log(e);
       setStartDate(obj["starting_date"]);
+      setCurrDate(obj["starting_date"]);
       setEndDate(obj["ending_date"]);
     });
     eventSource.addEventListener("curr_date", (e) => {
@@ -28,10 +31,15 @@ function App() {
     });
     eventSource.addEventListener("post_id", (e) => {
       console.log(e);
-      setCurrPost(JSON.parse(e["data"])["post_id"]);
+      let obj = JSON.parse(e["data"]);
+      setCurrPost(obj["post_id"]);
+      setCurrData(obj["curr_data"]);
     });
     eventSource.addEventListener("stop", (e) => {
       setOpenProgressWindow(false);
+    });
+    eventSource.addEventListener("metadata_data_size", (e) => {
+      setDataSize(JSON.parse(e["data"])["data_size"]);
     });
   }, []);
 

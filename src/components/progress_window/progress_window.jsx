@@ -22,16 +22,25 @@ const ProgressWindow = (props) => {
     console.log(value);
     let rounded_value = Math.round(value * 10) / 10;
     setProgress(rounded_value);
-  });
+  }, [props.currDate, props.startDate, props.endDate]);
 
   const handleToggle = () => {
     props.setOpen(!props.open);
   };
+
+  const getDate = () => {
+    const date = new Date(props.currDate * 1000);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
   return (
     <Backdrop
       className={classes.backdrop}
       open={props.open}
-      onClick={handleToggle}
+      // onClick={handleToggle}
     >
       <div className="progress-window">
         {props.currPost ? (
@@ -51,12 +60,9 @@ const ProgressWindow = (props) => {
               <CurrentItem class="current-post" message={props.currPost} />
               <CurrentItem
                 class="current-date-label"
-                message="Scraping Posts of"
+                message="Scraping Posts from"
               />
-              <CurrentItem
-                class="current-date"
-                message={new Date(props.currDate * 1000)}
-              />
+              <CurrentItem class="current-date" message={getDate()} />
             </div>
           </div>
         ) : (

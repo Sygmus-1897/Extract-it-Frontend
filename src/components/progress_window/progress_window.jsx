@@ -24,9 +24,9 @@ const ProgressWindow = (props) => {
     setProgress(rounded_value);
   }, [props.currDate, props.startDate, props.endDate]);
 
-  const handleToggle = () => {
-    props.setOpen(!props.open);
-  };
+  // const handleToggle = () => {
+  //   props.setOpen(!props.open);
+  // };
 
   const getDate = () => {
     const date = new Date(props.currDate * 1000);

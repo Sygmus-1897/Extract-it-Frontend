@@ -9,9 +9,9 @@ function App() {
   let [resumeCheck, setResumeCheck] = useState(true);
   let [openProgressWindow, setOpenProgressWindow] = useState(false);
   let [startDate, setStartDate] = useState(0);
-  let [endDate, setEndDate] = useState(1);
-  let [currDate, setCurrDate] = useState(0);
-  let [currPost, setCurrPost] = useState("");
+  let [endDate, setEndDate] = useState(2);
+  let [currDate, setCurrDate] = useState(1);
+  let [currPost, setCurrPost] = useState("x");
   let [dataSize, setDataSize] = useState(1);
   let [currData, setCurrData] = useState(0);
   // let [serverResponse, setServerResponse] = useState("");
@@ -63,6 +63,8 @@ function App() {
           endDate={endDate}
           currDate={currDate}
           currPost={currPost}
+          currData={currData}
+          dataSize={dataSize}
         />
       )}
     </>

@@ -27,12 +27,12 @@ const ProgressWindow = (props) => {
   //   props.setOpen(!props.open);
   // };
 
-  const getDate = () => {
-    const date = new Date(props.currDate * 1000);
+  const getDate = (timestamp, len) => {
+    const date = new Date(timestamp * 1000);
     const day = date.getDate();
-    const month = date.getMonth() + 1;
+    const month = date.toLocaleString("india", { month: len });
     const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+    return `${day}  ${month}  ${year}`;
   };
 
   return (
@@ -46,6 +46,9 @@ const ProgressWindow = (props) => {
           <div className="progress-window-container">
             <div className="progress-window-title-container">
               <label className="progress-window-title">Extracting Data</label>
+              <label className="end-date-label">
+                till {getDate(props.endDate, "short")}
+              </label>
             </div>
             <div className="progress-section">
               <label className="progress-counter">
@@ -56,13 +59,17 @@ const ProgressWindow = (props) => {
             <div className="info-section">
               <div className="post-info">
                 <label className="current-post-label">Working on postID:</label>
-                <label className="current-post">{props.currPost}</label>
+                <label className="current-post">
+                  {props.currPost} ({props.currData}/{props.dataSize})
+                </label>
               </div>
               <div className="date-info">
                 <label className="current-date-label">
                   Scraping posts from:
                 </label>
-                <label className="current-date">{getDate()}</label>
+                <label className="current-date">
+                  {getDate(props.currDate, "long")}
+                </label>
               </div>
             </div>
           </div>

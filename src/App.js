@@ -10,9 +10,9 @@ function App() {
   let [openProgressWindow, setOpenProgressWindow] = useState(false);
   let [startDate, setStartDate] = useState(0);
   let [endDate, setEndDate] = useState(2);
-  let [currDate, setCurrDate] = useState(1);
-  let [currPost, setCurrPost] = useState("x");
-  let [dataSize, setDataSize] = useState(1);
+  let [currDate, setCurrDate] = useState(0);
+  let [currPost, setCurrPost] = useState("");
+  let [dataSize, setDataSize] = useState(0);
   let [currData, setCurrData] = useState(0);
   // let [serverResponse, setServerResponse] = useState("");
 
@@ -36,6 +36,7 @@ function App() {
       setCurrData(obj["curr_data"]);
     });
     eventSource.addEventListener("stop", (e) => {
+      console.log(e);
       setOpenProgressWindow(false);
     });
     eventSource.addEventListener("metadata_data_size", (e) => {

@@ -29,9 +29,9 @@ const ProgressWindow = (props) => {
 
   const getDate = (timestamp, len) => {
     const date = new Date(timestamp * 1000);
-    const day = date.getDate();
+    const day = date.getUTCDate();
     const month = date.toLocaleString("india", { month: len });
-    const year = date.getFullYear();
+    const year = date.getUTCFullYear();
     return `${day}  ${month}  ${year}`;
   };
 

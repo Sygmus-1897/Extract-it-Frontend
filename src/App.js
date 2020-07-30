@@ -42,6 +42,18 @@ function App() {
     eventSource.addEventListener("metadata_data_size", (e) => {
       setDataSize(JSON.parse(e["data"])["data_size"]);
     });
+    // eventSource.addEventListener("start_test", (e) => {
+    //   console.log(e);
+    // });
+    // eventSource.addEventListener("outer_test", (e) => {
+    //   console.log(e);
+    // });
+    // eventSource.addEventListener("inner_test", (e) => {
+    //   console.log(e);
+    // });
+    // eventSource.addEventListener("stop_test", (e) => {
+    //   console.log(e);
+    // });
   }, []);
 
   return (

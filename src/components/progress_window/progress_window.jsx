@@ -42,7 +42,7 @@ const ProgressWindow = (props) => {
       // onClick={handleToggle}
     >
       <div className="progress-window">
-        {props.currPost ? (
+        {props.currDate ? (
           <div className="progress-window-container">
             <div className="progress-window-title-container">
               <label className="progress-window-title">Extracting Data</label>
@@ -60,7 +60,9 @@ const ProgressWindow = (props) => {
               <div className="post-info">
                 <label className="current-post-label">Working on postID:</label>
                 <label className="current-post">
-                  {props.currPost} ({props.currData}/{props.dataSize})
+                  {props.currPost
+                    ? `${props.currPost} (${props.currData}/${props.dataSize})`
+                    : "loading..."}
                 </label>
               </div>
               <div className="date-info">

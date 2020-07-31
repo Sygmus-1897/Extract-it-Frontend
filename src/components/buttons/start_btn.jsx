@@ -36,7 +36,7 @@ const StartButton = (props) => {
         console.log(res.data);
       })
       .catch((error) => console.log(error));
-    props.setOpen(!props.open);
+    // props.setOpen(!props.open);
   };
 
   const classes = useStyles();

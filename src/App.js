@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SubredditRow from "./components/subreddit_row/subreddit_row.jsx";
 import ResumeRow from "./components/resume_row/resume_row";
-import StartButton from "./components/start_btn/start_btn";
+import StartButton from "./components/buttons/start_btn";
+import StopButton from "./components/buttons/stop_btn";
 import ProgressWindow from "./components/progress_window/progress_window";
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
   // let [serverResponse, setServerResponse] = useState("");
 
   useEffect(() => {
-    let eventSource = new EventSource("http://localhost:5000/post_id");
+    let eventSource = new EventSource("http://localhost:5000/extraction");
     eventSource.addEventListener("bounds", (e) => {
       let obj = JSON.parse(e["data"]);
       console.log(e);
@@ -42,18 +43,18 @@ function App() {
     eventSource.addEventListener("metadata_data_size", (e) => {
       setDataSize(JSON.parse(e["data"])["data_size"]);
     });
-    // eventSource.addEventListener("start_test", (e) => {
-    //   console.log(e);
-    // });
-    // eventSource.addEventListener("outer_test", (e) => {
-    //   console.log(e);
-    // });
-    // eventSource.addEventListener("inner_test", (e) => {
-    //   console.log(e);
-    // });
-    // eventSource.addEventListener("stop_test", (e) => {
-    //   console.log(e);
-    // });
+    eventSource.addEventListener("start_test", (e) => {
+      console.log(e);
+    });
+    eventSource.addEventListener("outer_test", (e) => {
+      console.log(e);
+    });
+    eventSource.addEventListener("inner_test", (e) => {
+      console.log(e);
+    });
+    eventSource.addEventListener("stop_test", (e) => {
+      console.log(e);
+    });
   }, []);
 
   return (
@@ -67,6 +68,7 @@ function App() {
           open={openProgressWindow}
           setOpen={setOpenProgressWindow}
         />
+        <StopButton />
       </form>
       {openProgressWindow && (
         <ProgressWindow
